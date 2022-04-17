@@ -2,7 +2,6 @@ import React from 'react';
 
 const Filter = ({name,action}) => {
     const handleClick = () => { 
-        setName(name)
         action();
     }
     return (
