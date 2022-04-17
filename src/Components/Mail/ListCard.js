@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import { getFirstLetter, dateFormatter, isFavourite } from '../../utils/utilities'
 
 const ListCard = (props) => {
     const { id, from, date, subject, short_description, action, bodyData } = props;
-    let [isActiveId, setIsActiveId] = useState(null);
-    let [isActive, setIsActive] = useState(false);
-    const handleClick = (Id,...e) => {
-        // console.log(isActiveId,id)
-        setIsActiveId(() => Id);
-        action(Id);
-        setIsActive(()=>true)
-        console.log(...e)
 
+    const handleClick = (Id) => {
+        action(Id);
     }
     return (
-        <div className={bodyData ? 'list_card_container' : 'list_card_container active'} onClick={(...e) => handleClick(id,...e)}>
-            <div className={isActive ? 'list_card_container selected' : 'list_card_container'}>
+        <div className={bodyData ? 'list_card_container' : 'list_card_container active'} onClick={() => handleClick(id)}>
                 <div className="list_card_left"><h1>{getFirstLetter(from.name)}</h1></div>
                 <div className="list_card_right">
                     <div className="list_card_right_top">
@@ -32,7 +24,6 @@ const ListCard = (props) => {
                 </div>
 
             </div>
-     </div>
     );
 };
 

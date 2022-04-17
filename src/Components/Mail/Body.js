@@ -8,7 +8,6 @@ const Body = ({ bodyData }) => {
     const { id, from, subject, date } = bodyData || {};
     const dispatch = useDispatch();
     const { body } = useSelector(state => state.body || {});
-    let [isActive, setIsActive] = useState(false);
     const elRef = useRef();
 
 
@@ -20,11 +19,9 @@ const Body = ({ bodyData }) => {
     });
     const handleClick = () => {
         if (isFavourite(id)) {
-            setIsActive(true);
             markNotFavourite(id);
         }
         else {
-            setIsActive(false);
             markFavourite(id);
         }
     }
@@ -47,9 +44,9 @@ const Body = ({ bodyData }) => {
                             <span className='body_header'>{subject}</span>
                             <span className='body_text'>{dateFormatter(date)}</span>
                         </div>
-                        <div className="body_container_right_top_left" onClick={(id) => handleClick(id)}>
+                        <div className="body_container_right_top_left" onClick={() => handleClick(id)}>
                             <img src={require('../../assets/star.svg').default}
-                                alt='mySvgImage'
+                                alt='fav button'
                                 width='24' height='24'
                                 className={isFavourite(id) ? 'star active' : 'star'} />
                         </div>

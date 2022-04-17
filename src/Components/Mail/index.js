@@ -15,7 +15,7 @@ const Mail = () => {
     const [listData, setListData] = useState([]);
     const [bodyData, setBodyData] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalCount, setTotalCount] = useState(total);
+    const [totalCount, setTotalCount] = useState(15);
     const [pageSize, setPageSize] = useState(10);
     const dispatch = useDispatch();
     const previousValue = usePrevious(list);
@@ -33,6 +33,7 @@ const Mail = () => {
         if (previousValue || (newList && (JSON.stringify(previousValue) !== newList))) {
             dispatch(MailList(pageNumber))
             setListData(list);
+            setTotalCount(total)
         }
     }, [dispatch, pageNumber, newList]);
 
