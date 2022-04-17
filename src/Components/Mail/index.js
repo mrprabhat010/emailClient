@@ -33,9 +33,9 @@ const Mail = () => {
         if (previousValue || (newList && (JSON.stringify(previousValue) !== newList))) {
             dispatch(MailList(pageNumber))
             setListData(list);
-            setTotalCount(total)
         }
-    }, [dispatch, pageNumber, newList]);
+
+    }, [dispatch,total, pageNumber, newList]);
 
 
 
